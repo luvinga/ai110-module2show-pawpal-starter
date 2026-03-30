@@ -50,3 +50,14 @@ The PawPal+ scheduler includes advanced features for efficient pet care planning
 - **Flexible Filtering**: Filter tasks by completion status or specific pets to focus on relevant care.
 - **Recurring Tasks**: Automatically creates new task instances for daily/weekly routines when marked complete, using Python's `timedelta` for date calculations.
 - **Conflict Detection**: Lightweight checks warn about pet overload (multiple tasks per pet) and time overruns, ensuring feasible schedules without complex time slot management.
+
+## Testing PawPal+
+
+Run the test suite with:
+```bash
+python3 -m pytest tests/test_pawpal.py
+```
+
+The tests cover core behaviors including task completion, addition, sorting by time, recurring task automation, and conflict detection for pet overload and time constraints.
+
+**Confidence Level**: ⭐⭐⭐⭐⭐ (5/5 stars) - All tests pass, covering happy paths and edge cases, ensuring reliable scheduling logic.
