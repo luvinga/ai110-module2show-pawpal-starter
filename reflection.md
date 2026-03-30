@@ -12,6 +12,7 @@ I initially planned to create a class called petName, but realized a pet's name 
 **b. Design changes**
 
 - Did your design change during implementation?
+No. I kept the same.
 - If yes, describe at least one change and why you made it.
 
 ---
@@ -27,6 +28,8 @@ I initially planned to create a class called petName, but realized a pet's name 
 
 - Describe one tradeoff your scheduler makes.
 - Why is that tradeoff reasonable for this scenario?
+
+The scheduler assumes tasks are performed sequentially and only checks for pet overload (multiple tasks per pet) rather than time-based overlaps, as tasks lack explicit start times. This tradeoff prioritizes simplicity and avoids complex time slot management, making the system easier to implement and understand, while still providing useful warnings for potential scheduling issues in a pet care context.
 
 ---
 
