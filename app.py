@@ -54,6 +54,32 @@ if st.session_state.owner.pets:
     for pet in st.session_state.owner.pets:
         st.write(f"- {pet.name}: {len(pet.tasks)} tasks")
 
+# View Tasks Section
+st.subheader("View All Tasks")
+if st.session_state.owner.pets:
+    scheduler = Scheduler(st.session_state.owner)
+    all_tasks = scheduler.retrieve_tasks()
+    if all_tasks:
+        # Sort tasks by time
+        sorted_tasks = scheduler.sort_by_time(all_tasks)
+        # Prepare data for table
+        task_data = [
+            {
+                "Pet": next((p.name for p in st.session_state.owner.pets if t in p.tasks), "Unknown"),
+                "Description": t.description,
+                "Time": t.time,
+                "Frequency": t.frequency,
+                "Due Date": str(t.due_date),
+                "Status": "Complete" if t.completion_status else "Incomplete"
+            }
+            for t in sorted_tasks
+        ]
+        st.table(task_data)
+    else:
+        st.info("No tasks added yet.")
+else:
+    st.info("Add a pet first to view tasks.")
+
 st.divider()
 
 # Update Owner
@@ -106,7 +132,30 @@ if st.button("Generate Schedule"):
         scheduler = Scheduler(st.session_state.owner)
         schedule = scheduler.build_schedule()
         explanation = scheduler.explain_plan(schedule)
-        st.text_area("Today's Schedule", explanation, height=300)
+        
+        # Display schedule summary
+        lines = explanation.split('\n')
+        schedule_lines = []
+        warnings = []
+        in_warnings = False
+        for line in lines:
+            if line.startswith('Warnings:'):
+                in_warnings = True
+                continue
+            if in_warnings:
+                if line.strip():
+                    warnings.append(line.strip('- '))
+            else:
+                schedule_lines.append(line)
+        
+        st.text_area("Today's Schedule", '\n'.join(schedule_lines), height=200)
+        
+        # Display warnings prominently
+        if warnings:
+            for warning in warnings:
+                st.warning(warning)
+        else:
+            st.success("No scheduling conflicts detected!")
     else:
         st.error("Add pets and tasks first!")
 

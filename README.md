@@ -51,6 +51,20 @@ The PawPal+ scheduler includes advanced features for efficient pet care planning
 - **Recurring Tasks**: Automatically creates new task instances for daily/weekly routines when marked complete, using Python's `timedelta` for date calculations.
 - **Conflict Detection**: Lightweight checks warn about pet overload (multiple tasks per pet) and time overruns, ensuring feasible schedules without complex time slot management.
 
+## Features
+
+- **Smart Task Sorting** — Organize pet care activities chronologically to build efficient daily schedules
+- **Time-Based Conflict Detection** — Automatic warnings when task duration exceeds available time or a pet has overlapping priorities
+- **Daily & Weekly Recurrence** — Set recurring tasks that automatically regenerate after completion for seamless ongoing care
+- **Priority-Based Scheduling** — Intelligent algorithm that prioritizes incomplete tasks and fits them within your available time
+- **Multi-Pet Coordination** — Manage care tasks across multiple pets with conflict tracking and individual pet preferences
+- **Task Filtering & Organization** — View tasks by completion status, pet, or time to stay organized
+- **Care Plan Explanation** — Detailed schedule summaries showing what tasks fit your time and why, with actionable conflict warnings
+
+## 📸 Demo
+
+![PawPal+ App Screenshot](uml_final.png)  <!-- Replace with actual screenshot of your Streamlit app -->
+
 ## Testing PawPal+
 
 Run the test suite with:
