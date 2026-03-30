@@ -5,7 +5,9 @@
 **a. Initial design**
 
 - Briefly describe your initial UML design.
+
 - What classes did you include, and what responsibilities did you assign to each?
+I initially planned to create a class called petName, but realized a pet's name is an attribute of a Pet class, not a class itself. I redesigned it so Pet holds name, species, and preferences, and Scheduler takes a Pet and list of CareTask objects to build a plan.
 
 **b. Design changes**
 
